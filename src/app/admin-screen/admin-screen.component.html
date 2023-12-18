@@ -1,0 +1,36 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="admin-screen container-sm p-3">
+  <h1 class="mb-3">Administrators</h1>
+  <form [formGroup]="adminForm" (ngSubmit)="createAdministrator(adminForm.value.email, adminForm.value.password)" class="mb-3">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" formControlName="email" id="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" formControlName="password" id="password" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Create Administrator</button>
+  </form>
+  <ul class="list-group mb-3">
+    <li *ngFor="let admin of administrators" class="list-group-item d-flex justify-content-between align-items-center">
+      <span>{{ admin.email }}</span>
+      <button (click)="deleteAdministrator(admin)" class="btn btn-danger">❌</button>
+    </li>
+  </ul>
+
+  <h1 class="mb-3">Enrollment Requests</h1>
+  <ul class="list-group">
+    <li *ngFor="let request of enrollmentRequests" class="list-group-item">
+      <div>Request ID: {{ request.id }}</div>
+      <div>Student ID: {{ request.student }}</div>
+      <div>Course ID: {{ request.course }}</div>
+      <div>Approved: {{ request.approved }}</div>
+      <div>Approved By: {{ request.approved_by }}</div>
+      <div>Approval Reason: {{ request.approval_reason }}</div>
+      <div>Approval Date: {{ request.approval_date }}</div>
+      <button [disabled]="request.approved" (click)="reviewRequest(request)" class="btn btn-primary mt-2">Review Request</button>
+    </li>
+  </ul>
+</div>

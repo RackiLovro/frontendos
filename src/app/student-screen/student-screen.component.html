@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<div *ngFor="let course of courses" class="container-sm p-3 mb-3 border rounded">
+  <h2 class="mb-3">{{ course.name }}</h2>
+  <p><strong>Quota:</strong> {{ course.quota }}</p>
+  <p><strong>Description:</strong> {{ course.description }}</p>
+  <p><strong>ECTS:</strong> {{ course.ects }}</p>
+  <ul class="list-group mb-3">
+    <li *ngFor="let lecture of course.lectures" class="list-group-item">{{ lecture.name }}</li>
+  </ul>
+  <button (click)="goToCourseDetails(course)" class="btn btn-primary btn-block mb-2">View Course Details</button>
+  <button (click)="enrollInCourse(course)" class="btn btn-secondary btn-block">Enroll in Course</button>
+</div>

@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<div *ngIf="course" class="container-sm p-3">
+  <h2 class="mb-3">{{ course?.name }}</h2>
+  <p><strong>Quota:</strong> {{ course?.quota }}</p>
+  <p><strong>Description:</strong> {{ course?.description }}</p>
+  <p><strong>ECTS:</strong> {{ course?.ects }}</p>
+  <ul class="list-group mb-3">
+    <li *ngFor="let lecture of course?.lectures" class="list-group-item">
+      <h3>{{ lecture?.name }}</h3>
+      <p><strong>Description:</strong> {{ lecture?.description }}</p>
+      <p><strong>ECTS Points:</strong> {{ lecture?.ects_points }}</p>
+    </li>
+  </ul>
+</div>
